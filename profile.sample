@@ -1,0 +1,13 @@
+# You can define all or not variables.
+
+# Replace default path to config
+CONFIG="/path/to/config"
+
+# Add addition routes
+EXTRA_ROUTES="10.0.0.1/24 10.0.1.1"
+
+# Replace routes created via snx
+NEW_ROUTES="192.168.100.1/24"
+
+#Add extra domains for lookup via tunsnx interface 
+EXTRA_DOMAINS="example.com mydomain.local"

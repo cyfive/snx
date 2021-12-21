@@ -1,0 +1,12 @@
+server you.url
+username you-user-name
+sslport 443
+certificate /path/to/certificate
+calist /path/to/dir
+reauth yes|no
+debug yes|no
+cipher RC4|3DES
+proxy_name proxy.url
+proxy_port 3128
+proxy_user proxy-user-name
+proxy_pass proxy-password
