@@ -10,7 +10,7 @@ This script tested on my work VPN and Fedora 34. I can't guarantee work with you
 
 ## Configuration
 
-You need to create two configuration files. One for SNX (standard config for snx client, see snx.conf.sample for all available options), second configuration file is profile. Profile used to fix some issue with DNS and network routes,
+You need to create two configuration files. One for SNX (standard config for snx client, see snx.conf.sample for all available options), second configuration file is profile. Profile used to fix some issue with DNS and network routes.
 
 Available options:
 
