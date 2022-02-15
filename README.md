@@ -34,6 +34,11 @@ EXTRA_DOMAINS="example.com mydomain.local"
 ```
 If your company uses split DNS for VPN network and public queries you can add extra domains for forwarding queries to the DNS servers behind VPN.
 
+````
+PASSWORD="SuperSecretPassword"
+````
+Dont't prompt password, use configured yet.
+
 ## Usage
 
 ```

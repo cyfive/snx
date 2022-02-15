@@ -11,6 +11,7 @@ ACTION=""
 PROFILE=""
 CONFIG="snx.conf"
 SNX_STATUS_FILE="snx.status"
+PASSWORD=""
 
 # Parse command line arguments
 while [ $# -gt 0 ]; do
@@ -55,7 +56,6 @@ Usage:
 EOH
 }
 
-#CONFIG="snx.conf"
 EXTRA_ROUTES=""
 NEW_ROUTES=""
 
@@ -72,8 +72,12 @@ if [ "$ACTION" == "start" ]; then
         exit 1
     fi
 
-    echo "Please enter your password:"
-    snx -f "$CONFIG" > ${SNX_STATUS_FILE}
+    if [ -n "$PASSWORD" ]; then
+        echo ${PASSWORD} | snx -f "$CONFIG" > ${SNX_STATUS_FILE}
+    else
+        echo "Please enter your password:"
+        snx -f "$CONFIG" > ${SNX_STATUS_FILE}
+    fi
 
     if [ $? -eq 0 ]; then
         DNS=$(grep "DNS Server" ${SNX_STATUS_FILE} | tr -s " " | cut -d ":" -f 2 | tr -s "\n" " ")
