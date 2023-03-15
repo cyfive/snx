@@ -2,11 +2,26 @@
 
 ## WARNING
 
-This script tested on my work VPN and Fedora 34. I can't guarantee work with your VPN setup.
+This script tested on my work VPN and Fedora 34, 37. I can't guarantee work with your VPN setup.
 
 ## Dependencies
 1. You system must have `systemd` and use `systemd-resolved`.
-2. Installed SNX for linux (build `800010003`, please search it on Checkpoint support site) with all dependencies (like `compat-libstdc++-33-3.2.3-72.el7.i686.rpm`).
+2. Install all dependencies (`nss-tools, openssl, xterm, glibc.i686, pam.i686, libX11.i686, libnsl.i686, compat-libstdc++-33-3.2.3-72.el7.i686.rpm`).
+
+```
+sudo dnf install nss-tools openssl xterm glibc.i686 pam.i686 libX11.i686 libnsl.i686
+```
+3. Download `compat-libstdc++-33-3.2.3-72.el7.i686.rpm`, and install it (i found it on https://www.rpmfind.net/):
+
+```
+sudo dnf install compat-libstdc++-33-3.2.3-72.el7.i686.rpm
+```
+
+4. Download and install SNX build 800010003 (`snx_install_linux30.sh` please search it on Checkpoint support site)
+
+```
+sudo snx_install_linux30.sh
+```
 
 ## Configuration
 
@@ -42,21 +57,21 @@ Dont't prompt password, use configured yet.
 ## Usage
 
 ```
-snx.sh -c snx.conf -p work.profile start
+up-snx.sh -c snx.conf -p work.profile start
 ```
 
 or 
 
 ```
-snx.sh -p work.profile start
+up-snx.sh -p work.profile start
 ```
 
 ```
-snx.sh -c snx.conf -p work.profile stop
+up-snx.sh -c snx.conf -p work.profile stop
 ```
 
 or
 
 ```
-snx.sh -p work.profile stop
+up-snx.sh -p work.profile stop
 ```
