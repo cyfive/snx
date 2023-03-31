@@ -1,6 +1,4 @@
-compat-libstdc++-33-3.2.3-72.el7.i686.rpm
-snx_install_linux30.sh
-snx_install.sh
+contrib/*
 *.profile
 *.conf
 *.status
