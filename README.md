@@ -56,6 +56,28 @@ Dont't prompt password, use configured yet.
 
 ## Usage
 
+For first time run you must run `snx` and accept certificates.
+
+```
+snx -f ./snx.conf
+```
+
+And follow instructions like this:
+
+```
+Check Point's Linux SNX
+build 800010003
+Please enter your password:
+SNX authentication:
+Please confirm the connection to gateway: *.example.com
+Root CA fingerprint: STUK TEN DUD HUB MEIK MILD FLED FONT RUDE BETA TEAL REAM
+Do you accept? [y]es/[N]o:
+
+```
+
+Now you can use wrapper!
+
+
 ```
 up-snx.sh -c snx.conf -p work.profile start
 ```
