@@ -82,17 +82,17 @@ if [ "$ACTION" == "start" ]; then
     if [ $? -eq 0 ]; then
         DNS=$(grep "DNS Server" ${SNX_STATUS_FILE} | tr -s " " | cut -d ":" -f 2 | tr -s "\n" " ")
         if [ -n "$DNS" ]; then
-            resolvectl dns tunsnx $DNS
+            sudo resolvectl dns tunsnx $DNS
         fi
 
         DOMAINS=$(grep "DNS Suffix" ${SNX_STATUS_FILE} | cut -d ":" -f 2 | tr -s ";" " ")
         if [ -n "$DOMAINS" ]; then
-            resolvectl domain tunsnx $DOMAINS
+            sudo resolvectl domain tunsnx $DOMAINS
         fi
 
         # Extra domains in addition that snx return
         if [ -n "$EXTRA_DOMAINS" ]; then
-            resolvectl domain tunsnx $EXTRA_DOMAINS
+            sudo resolvectl domain tunsnx $EXTRA_DOMAINS
         fi
 
         # Replace routes from SNX to own configured
@@ -101,20 +101,20 @@ if [ "$ACTION" == "start" ]; then
             if [ -n "$OLD_ROUTES" ]; then
                 OLD_ROUTES=${OLD_ROUTES// /|}
                 for old_route in "${OLD_ROUTES[@]}"; do
-                    ip route del "${old_route//|/ }"
+                    sudo ip route del "${old_route//|/ }"
                 done
             fi
 
             # Add new routes
             for new_route in $NEW_ROUTES; do
-                ip route add "$new_route" dev tunsnx
+                sudo ip route add "$new_route" dev tunsnx
             done
         fi
 
         # Add extra routes from configuration
         if [ -n "$EXTRA_ROUTES" ]; then
             for extra_route in $EXTRA_ROUTES; do
-                ip route add "$extra_route" dev tunsnx
+                sudo ip route add "$extra_route" dev tunsnx
             done
         fi
 
@@ -128,17 +128,17 @@ elif [ "$ACTION" == "stop" ]; then
     # delete extra routes
     if [ -n "$EXTRA_ROUTES" ]; then
         for extra_route in $EXTRA_ROUTES; do
-            ip route del "$extra_route" dev tunsnx
+            sudo ip route del "$extra_route" dev tunsnx
         done
     fi
     if [ -n "$NEW_ROUTES" ]; then
         for new_route in $NEW_ROUTES; do
-            ip route del "$new_route" dev tunsnx
+            sudo ip route del "$new_route" dev tunsnx
         done
     fi
     echo "Revert DNS configuration"
-    resolvectl revert tunsnx
-    resolvectl flush-caches
+    sudo resolvectl revert tunsnx
+    sudo resolvectl flush-caches
 
     echo "Stopping SNX vpn"
     snx -d
