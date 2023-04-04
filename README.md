@@ -2,7 +2,7 @@
 
 ## WARNING
 
-This script tested on my work VPN and Fedora 34, 37. I can't guarantee work with your VPN setup.
+This script tested on my work VPN and Fedora 34, 37, 38. I can't guarantee work with your VPN setup.
 
 ## Dependencies
 1. You system must have `systemd` and use `systemd-resolved`.
