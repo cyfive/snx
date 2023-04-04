@@ -73,7 +73,7 @@ if [ "$ACTION" == "start" ]; then
     fi
 
     if [ -n "$PASSWORD" ]; then
-        echo ${PASSWORD} | snx -f "$CONFIG" > ${SNX_STATUS_FILE}
+        echo "${PASSWORD}" | snx -f "$CONFIG" > ${SNX_STATUS_FILE}
     else
         echo "Please enter your password:"
         snx -f "$CONFIG" > ${SNX_STATUS_FILE}
